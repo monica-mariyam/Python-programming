@@ -1,4 +1,4 @@
-''' A class named custoemr with three attributes namely name,date of birth,mobile.
+''' A class named customer with three attributes namely name,date of birth,mobile.
 2 methods to get and print details
 calculating age and dob is date with private scope'''
 
