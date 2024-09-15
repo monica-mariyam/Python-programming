@@ -3,7 +3,6 @@
 1. Recursion
 2. Memoization
 3. Tabulation
-4. Space Optimization
 
 Input: W = 4, val[] = {1,2,3}, wt[] = {4,5,1}
 Output: 3
@@ -48,6 +47,22 @@ def knapSack(self,W, wt, val):
         n = len(wt)
         dp = [[-1 for j in range(W+1)] for i in range(n)]
         return f(n-1,W,wt,val,dp) 
+
+#tabulation
+def knapSack(self,W, wt, val):
+        n = len(wt)
+        dp = [[0 for j in range(W+1)] for i in range(n)]
+        for w in range(wt[0],W+1):
+            dp[0][w] = val[0]
+        
+        for i in range(1,n):
+            for w in range(W+1):
+                nottake = 0 + dp[i-1][w] #dont take current item, move to next
+                take = -1e7
+                if wt[i]<=w: #if item taken can fit, take its value
+                    take = val[i] + dp[i-1][w-wt[i]] #reduce in bag before moving to nxt
+                dp[i][w] = max(take, nottake)
+        return dp[n-1][W]
 
 
 
